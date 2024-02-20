@@ -1,0 +1,22 @@
+
+
+impl Solution {
+	pub fn reverse(x: i32) -> i32 {
+		let min: i64=-1*2_i64.pow(31);
+		let max:i64=2_i64.pow(31) - 1;
+		// println!("max={max},min={min}");
+		if x as i64>=max|| x as i64 <=min{ return 0};
+		let sy=if x>0 {1} else {-1};
+		let s=(x*sy).to_string().chars().rev().collect::<Vec<char>>();
+		let mut i:u32=s.len() as u32-1;
+		let mut sum: i64 =0;
+		for c in &s{
+			sum+= ((*c as u8 -'0' as u8) as i64) *10_i32.pow(i) as i64;
+			if i>0 {i-=1};
+			if sum>=max|| sum<=min{ return 0};
+	
+		}
+		sum as i32*sy 
+	}
+	
+	}
